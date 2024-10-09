@@ -5,6 +5,12 @@ PROJECT_DIR=$(pwd)
 ORDER_SERVICE_DIR="$PROJECT_DIR/order-management-service"
 USER_SERVICE_DIR="$PROJECT_DIR/user-management-service"
 
+convert_files() {
+    echo "Converting gradlew files from DOS to Unix format..."
+    dos2unix "$ORDER_SERVICE_DIR/gradlew"
+    dos2unix "$USER_SERVICE_DIR/gradlew"
+    echo "Conversion completed."
+}
 # Function to build Spring Boot applications
 build_apps() {
     echo "Building Spring Boot applications..."
@@ -30,6 +36,7 @@ start_containers() {
 # Function to initialize database (if necessary)
 
 # Main execution flow
+convert_files
 build_apps
 build_docker_images
 start_containers

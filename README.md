@@ -6,7 +6,15 @@ Before running the setup script, make sure to grant executable permissions to th
 ```bash
 chmod +x setup.sh
 ```
+install dos2unix
 
+```bash
+sudo apt install dos2unix
+```
+
+```bash
+dos2unix setup.sh
+```
 Before executing `./setup.sh`, ensure you have the required permissions.
 
 Install OpenJDK 17 by running the following command:
