@@ -15,12 +15,12 @@ sudo apt install dos2unix
 ```bash
 dos2unix setup.sh
 ```
-Before executing `./setup.sh`, ensure you have the required permissions.
 
 
 
-Once OpenJDK is installed, you can run the setup script directly on Linux:
 
+
+to run command:
 ```bash
 sudo ./setup.sh
 ```
