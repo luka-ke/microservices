@@ -1,4 +1,4 @@
-package com.example.ordermanagement.config;
+package com.example.usermanagement.config;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -13,7 +13,7 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("Order Management API")
+                .info(new Info().title("User Management API")
                         .description("API documentation for the Order Management Service")
                         .version("v1.0")
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")))

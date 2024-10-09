@@ -12,7 +12,7 @@ public class HazelcastConfig {
     @Bean
     public HazelcastInstance hazelcastInstance() {
         Config config = new Config();
-        // Additional Hazelcast configurations can go here
+
         return Hazelcast.newHazelcastInstance(config);
     }
 }

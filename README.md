@@ -24,6 +24,13 @@ Once OpenJDK is installed, you can run the setup script directly on Linux:
 ```bash
 sudo ./setup.sh
 ```
+Swagger for User service
+
+http://localhost:8080/swagger-ui/index.html#/
+
+Swagger for Order service
+
+http://localhost:8081/swagger-ui/index.html#/
 
 For Windows, you can run the setup script using:
 
@@ -44,3 +51,21 @@ Finally, set the necessary permissions for the order management service build di
 ```bash
 sudo chmod -R 777 microservices/parent-micro-service/order-management-service/build
 ```
+if containers already running
+```bash
+sudo docker rm hazelcast_instance
+```
+
+```bash
+sudo docker rm my_postgres_db
+```
+
+```bash
+sudo docker rm userMicroService
+```
+
+```bash
+sudo docker rm orderMicroService
+```
+
+

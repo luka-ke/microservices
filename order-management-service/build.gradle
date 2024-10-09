@@ -18,6 +18,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'
     testImplementation 'org.mockito:mockito-core:4.5.1'
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.15'
@@ -27,18 +28,18 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
-    implementation 'io.jsonwebtoken:jjwt-api:0.11.5' // For JWT API
-    implementation 'io.jsonwebtoken:jjwt-impl:0.11.5' // For JWT implementation
-    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5' // For JSON support
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web' // For web features
-    implementation 'org.springframework.boot:spring-boot-starter-security' // For Spring Security
-    implementation 'io.jsonwebtoken:jjwt:0.9.1' // For JWT handling
-    implementation 'org.postgresql:postgresql' // For PostgreSQL database
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation 'org.postgresql:postgresql'
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web' // Add this for web features
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.postgresql:postgresql'
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.projectlombok:lombok:1.18.22'

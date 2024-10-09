@@ -32,13 +32,13 @@ services:
     image: postgres:14
     container_name: my_postgres_db
     environment:
-      POSTGRES_DB: my_database   # Replace 'my_database' with your desired database name
-      POSTGRES_USER: my_user     # Replace 'my_user' with your desired username
-      POSTGRES_PASSWORD: Luka1234! # Replace 'my_password' with your desired password
+      POSTGRES_DB: my_database
+      POSTGRES_USER: my_user
+      POSTGRES_PASSWORD: Luka1234!
     networks:
       - microservices-parent_network
     ports:
-      - "5432:5432"   # Expose the PostgreSQL default port
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
   hazelcast:

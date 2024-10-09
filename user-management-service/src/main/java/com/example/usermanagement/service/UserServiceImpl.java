@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
     public void logCachedUsers() {
         Cache cache = cacheManager.getCache("user");
         if (cache != null) {
-            // Assuming the cache is backed by Hazelcast IMap
+
             IMap<String, UserDTO> userMap = (IMap<String, UserDTO>) cache.getNativeCache();
             List<UserDTO> cachedUsers = new ArrayList<>();
             for (String key : userMap.keySet()) {
