@@ -1,0 +1,2 @@
+rootProject.name = 'parent-micro-service'
+include 'order-management-service', 'user-management-service'
