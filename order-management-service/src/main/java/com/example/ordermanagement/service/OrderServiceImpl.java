@@ -22,6 +22,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class OrderServiceImpl implements OrderService{
     private final OrderRepo orderRepo;
+    private final KafkaProducerService kafkaProducerServicel;
     private static final Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
     private final UserRepo userRepo;
     private final UserRepoInterface userRepoInterface;
@@ -68,6 +69,7 @@ public class OrderServiceImpl implements OrderService{
                 .product(order.getProduct())
                 .quantity(order.getQuantity())
                 .build();
+        kafkaProducerServicel.sendMessage("ORDER_CREATED", newOrder.toString());
         return orderRepo.saveOrder(newOrder);
     }
 

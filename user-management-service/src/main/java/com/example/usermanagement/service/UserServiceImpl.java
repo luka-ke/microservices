@@ -29,6 +29,7 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
     private final UserRepo userRepo;
     private final UserRepoInterface userRepoInterface;
+    private final KafkaProducerService kafkaProducerService;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
@@ -47,8 +48,12 @@ public class UserServiceImpl implements UserService {
                 .build();
         userRepoInterface.save(user);
         var jwtToken = jwtService.generateToken(user);
+        var createdUser = userRepo.findUserById(uuid.toString());
+        kafkaProducerService.sendMessage("USER_CREATED", createdUser.toString());
         return AuthenticationResponse.builder()
                 .token(jwtToken)
+                .userId(createdUser.getId())
+                .userEmail(createdUser.getEmail())
                 .build();
     }
 

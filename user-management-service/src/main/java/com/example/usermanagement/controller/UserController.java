@@ -61,7 +61,7 @@ public class UserController {
         return new ResponseEntity<>(userService.deleteUser(id), HttpStatus.OK);
     }
     @CrossOrigin
-    @PostMapping("/public/authenticate")
+    @PostMapping("/public/api/login")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
     ) {
