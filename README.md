@@ -17,11 +17,7 @@ dos2unix setup.sh
 ```
 Before executing `./setup.sh`, ensure you have the required permissions.
 
-Install OpenJDK 17 by running the following command:
 
-```bash
-sudo apt install openjdk-17-jdk
-```
 
 Once OpenJDK is installed, you can run the setup script directly on Linux:
 
