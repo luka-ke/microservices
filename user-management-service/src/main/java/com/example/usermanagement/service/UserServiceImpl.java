@@ -74,9 +74,11 @@ public class UserServiceImpl implements UserService {
                 .token(jwtToken)
                 .userId(user.getId())
                 .userEmail(user.getEmail())
+                .role(user.getRole().name())
                 .userFirstName(user.getUserName())
                 .build();
     }
+
     public void logCachedUsers() {
         Cache cache = cacheManager.getCache("user");
         if (cache != null) {
@@ -95,6 +97,7 @@ public class UserServiceImpl implements UserService {
             logger.warn("Cache 'user' not found");
         }
     }
+
     public AuthenticationResponse checkAuthenticatedUser(AuthenticationRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         var user = userRepoInterface.findByEmail(request.getEmail())
@@ -133,6 +136,7 @@ public class UserServiceImpl implements UserService {
         var updatedUser = userRepoInterface.save(udpatedUser);
         return userRepo.mapToUserDTO(updatedUser);
     }
+
     @Cacheable(value = "user", key = "#id")
     public UserDTO findUserById(String id) {
         return userRepo.findUserById(id);
@@ -146,6 +150,27 @@ public class UserServiceImpl implements UserService {
 
     public List<UserDTO> listUsers() {
         return userRepo.listUsers();
+    }
+
+    public UserDTO updateSelfUser(String token, UserDTO userDTO) {
+        var user = findUserByToken(token);
+        var updateUserDetails = updateUserDetails(user.getUserId(), userDTO);
+        return updateUserDetails;
+    }
+
+    public UserDTO becomeAdmin(String id) {
+        return updateRoleToAdmin(id);
+    }
+
+    public UserDTO updateRoleToAdmin(String id) {
+        User existingUser = userRepoInterface.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with ID: " + id));
+
+        existingUser.setRole(Role.ADMIN);
+
+        User updatedUser = userRepoInterface.save(existingUser);
+
+        return userRepo.mapToUserDTO(updatedUser);
     }
 }
 

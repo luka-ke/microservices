@@ -3,6 +3,7 @@ package com.example.usermanagement.service;
 import com.example.usermanagement.dto.AuthenticationRequest;
 import com.example.usermanagement.dto.AuthenticationResponse;
 import com.example.usermanagement.dto.UserDTO;
+import com.example.usermanagement.model.User;
 
 import java.util.List;
 
@@ -27,4 +28,6 @@ public interface UserService {
     UserDTO deleteUser(String id);
 
     List<UserDTO> listUsers();
+    UserDTO  updateSelfUser(String token, UserDTO userDTO);
+    UserDTO becomeAdmin(String id);
 }

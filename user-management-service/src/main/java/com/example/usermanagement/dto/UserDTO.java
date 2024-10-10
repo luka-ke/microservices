@@ -1,5 +1,6 @@
 package com.example.usermanagement.dto;
 
+import com.example.usermanagement.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ public class UserDTO {
 
     private String password;
 
+    private Role role;
     public String getId() {
         return id;
     }

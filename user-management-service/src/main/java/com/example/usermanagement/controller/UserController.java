@@ -22,9 +22,10 @@ public class UserController {
     public ResponseEntity<UserDTO> getUser(@PathVariable String id) {
         return new ResponseEntity<>(userService.findUserById(id), HttpStatus.OK);
     }
-    @GetMapping("/log-cached-users")
+    @GetMapping("/log/cached-users")
     public ResponseEntity<Void> logCachedOrders() {
         userService.logCachedUsers();
+        System.out.println("logCachedOrders-->");
         return ResponseEntity.ok().build();
     }
     @CrossOrigin
@@ -51,6 +52,19 @@ public class UserController {
             @PathVariable String id, @RequestBody UserDTO userBody
     ) {
         return new ResponseEntity<>(userService.updateUserDetails(id, userBody), HttpStatus.OK);
+    }
+    @CrossOrigin
+    @PutMapping("/api/users/admin")
+    public ResponseEntity<UserDTO> becomeAdmin(@RequestParam String id){
+        return new ResponseEntity<>(userService.becomeAdmin(id), HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @PutMapping("/api/users/me")
+    public ResponseEntity<UserDTO> updateSelfUser(
+            @RequestParam String token, @RequestBody UserDTO userBody
+    ) {
+        return new ResponseEntity<>(userService.updateSelfUser(token, userBody), HttpStatus.OK);
     }
 
     @CrossOrigin
