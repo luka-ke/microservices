@@ -82,3 +82,8 @@ to authenticate secured endpoint pass token as Bearer Token in postman
 ### Requirements:
 docker
 
+
+### Note:
+
+```./setup.sh```  command is recommended.
+
