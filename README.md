@@ -24,7 +24,14 @@ to run command:
 ```bash
 sudo ./setup.sh
 ```
+
+
+brnach name:
+```
+main
+```
 Swagger for User service
+
 
 http://localhost:8080/swagger-ui/index.html#/
 
