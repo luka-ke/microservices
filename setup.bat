@@ -1,52 +1,45 @@
 @echo off
-REM Set variables
-SET PROJECT_DIR=%cd%
-SET ORDER_SERVICE_DIR=%PROJECT_DIR%\order-management-service
-SET USER_SERVICE_DIR=%PROJECT_DIR%\user-management-service
+setlocal
 
-REM Function to build Spring Boot applications
-:build_apps
+:: Set variables
+set "PROJECT_DIR=%cd%"
+set "ORDER_SERVICE_DIR=%PROJECT_DIR%\order-management-service"
+set "USER_SERVICE_DIR=%PROJECT_DIR%\user-management-service"
+
+:: Function to build Spring Boot applications
 echo Building Spring Boot applications...
-cd "%ORDER_SERVICE_DIR%"
-CALL gradlew clean build
-IF ERRORLEVEL 1 (
-    echo Build failed for order-management-service.
-    EXIT /B 1
+cd /d "%ORDER_SERVICE_DIR%" && call gradlew clean build
+if errorlevel 1 (
+    echo Failed to build order-management-service. Exiting...
+    exit /b 1
 )
-cd "%USER_SERVICE_DIR%"
-CALL gradlew clean build
-IF ERRORLEVEL 1 (
-    echo Build failed for user-management-service.
-    EXIT /B 1
+cd /d "%USER_SERVICE_DIR%" && call gradlew clean build
+if errorlevel 1 (
+    echo Failed to build user-management-service. Exiting...
+    exit /b 1
 )
 echo Build completed.
-GOTO :EOF
 
-REM Function to build Docker images
-:build_docker_images
+:: Function to build Docker images
 echo Building Docker images...
 docker-compose build
-IF ERRORLEVEL 1 (
-    echo Docker image build failed.
-    EXIT /B 1
+if errorlevel 1 (
+    echo Failed to build Docker images. Exiting...
+    exit /b 1
 )
 echo Docker images built.
-GOTO :EOF
 
-REM Function to start Docker containers
-:start_containers
+:: Function to start Docker containers
 echo Starting Docker containers...
 docker-compose up --build
-IF ERRORLEVEL 1 (
-    echo Failed to start Docker containers.
-    EXIT /B 1
+if errorlevel 1 (
+    echo Failed to start Docker containers. Exiting...
+    exit /b 1
 )
 echo Docker containers started.
-GOTO :EOF
 
-REM Main execution flow
-CALL :build_apps
-CALL :build_docker_images
-CALL :start_containers
-
+:: Final message
 echo Setup completed successfully.
+
+endlocal
+exit /b 0

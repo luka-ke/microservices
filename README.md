@@ -78,3 +78,7 @@ sudo docker rm orderMicroService
 
 to authenticate secured endpoint pass token as Bearer Token in postman
 
+
+### Requirements:
+docker
+
